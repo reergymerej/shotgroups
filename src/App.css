@@ -2,24 +2,25 @@
   text-align: center;
 }
 
-.crosshairs {
+.Crosshairs {
   display: flex;
   flex-direction: column;
   height: 500px;
+  background-repeat: no-repeat;
 }
 
-.crosshairs .row {
+.Crosshairs .row {
   flex: 1;
   display: flex;
 }
 
-.crosshairs .row:first-of-type {
+.Crosshairs .row:first-of-type {
   border-bottom: 1px dotted #000;
 }
 
-.crosshairs .row .cell {
+.Crosshairs .row .cell {
   flex: 1;
 }
-.crosshairs .row .cell:first-of-type {
+.Crosshairs .row .cell:first-of-type {
   border-right: 1px dotted #000;
 }
