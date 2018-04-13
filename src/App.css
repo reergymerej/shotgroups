@@ -4,6 +4,7 @@
 
 .Crosshairs, .Canvas {
   height: 500px;
+  width: 800px;
   background-repeat: no-repeat;
 }
 
@@ -26,4 +27,12 @@
 }
 .Crosshairs .row .cell:first-of-type {
   border-right: 4px dotted #000;
+}
+
+.Mark {
+  width: 30px;
+  height: 30px;
+  border-radius: 30px;
+  position: absolute;
+  background: #09f;
 }

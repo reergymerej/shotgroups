@@ -1,24 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Crosshairs from './Crosshairs'
-
-class Canvas extends Component {
-  render() {
-    const { imageSource, x, y } = this.props
-    const style = {
-      backgroundImage: `url(${imageSource})`,
-      backgroundPositionX: `${x}px`,
-      backgroundPositionY: `${y}px`,
-    }
-
-    return (
-      <div
-        className="Canvas"
-        style={style}
-      />
-    )
-  }
-}
+import Canvas from './Canvas'
 
 class App extends Component {
   state = {
