@@ -1,74 +1,63 @@
 import React, { Component } from 'react';
 import './App.css';
+import Crosshairs from './Crosshairs'
 
-const Row = () => (
-  <div className="row">
-    <div className="cell" />
-    <div className="cell" />
-  </div>
-)
-
-class Crosshairs extends Component {
-  state = {
-    x: 0,
-    y: 0,
-  }
-
-  handleMouseDown = (event) => {
-    this.setState({ dragging: true })
-  }
-
-  handleMouseUp = (event) => {
-    this.x = undefined
-    this.setState({ dragging: false })
-  }
-
-  handleMouseMove = (event) => {
-    if (this.state.dragging) {
-      if (this.x !== undefined) {
-        const mx = event.pageX - this.x
-        const my = event.pageY - this.y
-        this.setState({
-          x: this.state.x + mx,
-          y: this.state.y + my,
-        })
-      }
-      this.x = event.pageX
-      this.y = event.pageY
-    }
-  }
-
+class Canvas extends Component {
   render() {
-    const { imageSource } = this.props
+    const { imageSource, x, y } = this.props
     const style = {
       backgroundImage: `url(${imageSource})`,
-      backgroundPositionX: `${this.state.x}px`,
-      backgroundPositionY: `${this.state.y}px`,
+      backgroundPositionX: `${x}px`,
+      backgroundPositionY: `${y}px`,
     }
+
     return (
       <div
-        className="Crosshairs"
+        className="Canvas"
         style={style}
-        onMouseDown={this.handleMouseDown}
-        onMouseUp={this.handleMouseUp}
-        onMouseMove={this.handleMouseMove}
-      >
-        <Row />
-        <Row />
-      </div>
+      />
     )
   }
 }
 
-
 class App extends Component {
+  state = {
+    showCrossHairs: false,
+    x: 0,
+    y: 0,
+  }
+
+  handleButtonClick = () => {
+    this.setState({ showCrossHairs: !this.state.showCrossHairs })
+  }
+
+  handlePositionChange = (coords) => {
+    this.setState({ x: coords.x, y: coords.y })
+  }
+
   render() {
     const imageSource = "https://s3.envato.com/files/72225897/target.jpg"
+    const { x, y } = this.state
     return (
       <div className="App">
-        <Crosshairs
-          imageSource={imageSource}
-        />
+        <button onClick={this.handleButtonClick}>crosshairs</button>
+        {
+          this.state.showCrossHairs &&
+            <Crosshairs
+              imageSource={imageSource}
+              onPositionChange={this.handlePositionChange}
+              x={x}
+              y={y}
+            />
+        }
+        {
+          !this.state.showCrossHairs &&
+            <Canvas
+              imageSource={imageSource}
+              x={x}
+              y={y}
+            />
+        }
       </div>
     );
   }

@@ -2,11 +2,14 @@
   text-align: center;
 }
 
+.Crosshairs, .Canvas {
+  height: 500px;
+  background-repeat: no-repeat;
+}
+
 .Crosshairs {
   display: flex;
   flex-direction: column;
-  height: 500px;
-  background-repeat: no-repeat;
 }
 
 .Crosshairs .row {
@@ -15,12 +18,12 @@
 }
 
 .Crosshairs .row:first-of-type {
-  border-bottom: 1px dotted #000;
+  border-bottom: 4px dotted #000;
 }
 
 .Crosshairs .row .cell {
   flex: 1;
 }
 .Crosshairs .row .cell:first-of-type {
-  border-right: 1px dotted #000;
+  border-right: 4px dotted #000;
 }
