@@ -1,0 +1,25 @@
+.App {
+  text-align: center;
+}
+
+.crosshairs {
+  display: flex;
+  flex-direction: column;
+  height: 500px;
+}
+
+.crosshairs .row {
+  flex: 1;
+  display: flex;
+}
+
+.crosshairs .row:first-of-type {
+  border-bottom: 1px dotted #000;
+}
+
+.crosshairs .row .cell {
+  flex: 1;
+}
+.crosshairs .row .cell:first-of-type {
+  border-right: 1px dotted #000;
+}
